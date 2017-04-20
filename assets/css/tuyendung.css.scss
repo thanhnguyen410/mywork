@@ -1,0 +1,430 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 11, 2017, 9:07:16 AM
+    Author     : vuhai
+*/
+.box-filter-left {
+    width: 145px;
+    float: left;
+   
+}
+.box-filter-right {
+    float: right;
+    width: 145px;
+}
+/*them css*/
+    .asterisk {
+        position: absolute;
+        top: 2px;
+        right: -2px;
+        color: #FC205C;
+    }
+
+    .link-notity {
+        color: #FC205C !important;
+        font-weight: 500 !important;
+    }
+
+    .link-notity:hover {
+        color: #FFF !important;
+        font-weight: 500 !important;
+    }
+
+    .notification .menu .listmenu-user {
+        padding: 0 !important;
+    }
+
+    .notification .menu .listmenu-user .media {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .notification .action {
+        margin-top: 20px;
+    }
+
+    .notification .action a {
+        border-top: none;
+        font-size: 13px !important;
+        color: #555 !important;
+        font-weight: 500 !important;
+
+        padding: 8px 0;
+        height: 42px !important;
+        line-height: 42px !important;
+        color: #3b83c0 !important;
+    }
+
+    .notification .media-object {
+        height: 40px;
+        width: 40px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+    }
+
+    .notification .listmenu-user li a {
+        background-color: transparent;
+    }
+
+    .mywork-menu .ui.type-search .top-search-adv {
+        position: absolute;
+        top: 0;
+        right: -36px;
+        width: 82px;
+        font-size: 12px;
+        border-left: 1px solid #ddd;
+        height: 35px;
+        line-height: 36px;
+        color: #fc205c;
+        padding-left: 2px;
+    }
+
+    .mywork-menu .ui.type-search .top-search-adv .icon {
+        font-size: 14px;
+    }
+
+    .mywork-menu .ui.type-search .menu.list-type-search {
+        margin-top: 41px;
+        margin-left: -212px;
+    }
+
+    #frmSearchJob .search-tags {
+        padding-right: 82px;
+    }
+
+    .menu-user .text {
+        height: 39px;
+    }
+
+    .user-login .userbox.notification .ui.dropdown .menu.transition:before {
+        left: 330px;
+    }
+
+    .user-login .userbox.notification .ui.dropdown .menu {
+        margin-left: -315px;
+        width: 400px !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu {
+        width: 300px;
+        border: 1px solid #CCC;
+        border-radius: 2px;
+    }
+
+    .user-login .menu.transition:before {
+        border-bottom: 8px solid #C1C1C1;
+    }
+
+    .uni-name {
+        color: #3b93ba !important;
+    }
+
+    .item-clock {
+        color: #999;
+        font-size: 12px !important;
+        font-style: normal;
+        margin-top: 1px;
+        font-style: italic;
+        display: inline-block;
+    }
+
+    .no-notify {
+        padding: 20px;
+        background: #F7F7F7;
+    }
+   /*<!-- end adtophead-->*/ 
+  
+    .ui.search .prompt {
+        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        max-width: 300px;
+    }
+    .mywork-menu .ui.search .icon.input input{
+        height: 36px;
+        border: solid 1px #ebebeb;
+        background: #fff;
+        font-size: 12px;
+        color: #999999 !important;
+        border-radius: 0;
+        border-right: none;
+    }
+    .ui.search .prompt{
+        width: 270px !important;
+    }
+    .mywork-menu .user-login-menu .dropdown > div:first-child .icon {
+        margin-right: 3px;
+        color: #fff;
+    }
+    .mywork-menu .user-login-menu .dropdown:first-child > div:first-child {
+        background: #0091d1;
+    }
+    .mywork-menu .user-login-menu .dropdown > div:first-child {
+        background: #4caf50;
+    }
+    .mywork-menu .user-login-menu .dropdown .menu {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .head-search-option {
+        background: #ebebeb;
+        width: 289px;
+        float: left;
+        height: 36px;
+        border: solid 1px #ebebeb;
+        border-left: none;
+    }
+    .head-search-option > div {
+        height: 36px;
+        float: left;
+        padding: 10px 5px;
+    }
+    .head-search-option > div > a {
+        display: block;
+        border-left: 1px solid #d2d2d2;
+        padding-left: 8px;
+    }
+    .head-search-option .ui.visible.dropdown>.menu .item-tag {
+        position: relative;
+    }
+    .tt-dropdown-menu {
+        width: 586px !important;
+    }
+
+    .user-login .userbox:first-child .text a {
+        border-radius: 0;
+        background: #4caf50;
+        color: #fff;
+    }
+    .user-login .userbox:first-child .text a i {
+        color: #fff;
+    }
+    .user-login > ul > li {
+        border-radius: 0 !important;
+        background: #f7f7f7;
+    }
+    .user-login > ul > li > a {
+        border-radius: 0;
+    }
+    .mywork-menu .user-login .listmenu-user a {
+        background: #fff;
+        border-radius: 0;
+    }
+    .user-login .userbox .ui.dropdown .menu .listmenu-user a:hover {
+        background: #f7f7f7 !important;
+    }
+    .tt-dropdown-menu {
+        width: 588px !important;
+    }
+/*.ui.search .prompt*/
+
+    .notification .menu {
+        white-space: normal !important;
+    }
+
+    #list-uv-notify a {
+        height: 100% !important;
+        padding: 0 !important;
+        margin-right: 10px;
+    }
+
+    #list-uv-notify .media .media-left, #list-uv-notify .media .media-body {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    #list-uv-notify .media .media-left .media-object {
+        width: 50px;
+        height: 50px;
+    }
+
+    .action a {
+        height: 30px !important;
+        width: 100% !important;
+        line-height: 30px !important;
+        text-align: center !important;
+        background: #fafafa !important;
+        color: #333 !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        border-top: 1px #cdcdcd solid;
+        border-radius: 0px 0px !important;
+    }
+
+    .notify-link {
+        background: transparent !important;
+    }
+
+    .notify-link:hover {
+        background: transparent !important;
+        color: black !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu {
+        width: 300px !important;
+    }
+
+    .notification-menu .menu {
+        width: 400px !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu .listmenu-user a:hover {
+        background: #f7f7f7;
+        color: black !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu .listmenu-user a:hover {
+
+    }
+    /*<!-- end mywork header-->*/
+
+    .tags-list .tag-item {
+        background-color: #eee;
+        padding: 2px 5px;
+        /*border-radius: 2px;*/
+        margin: 3px 2px;
+        line-height: 22px;
+        display: inline-block;
+    }
+
+    .search_near span {
+        background: rgba(255, 255, 255, 0.4);
+        padding: 3px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        margin-top: 5px;
+        margin-left: 5px;
+        display: inline-block;
+        font-size: 10px;
+        color: #FFF;
+        background: rgba(0, 0, 0, .1);
+    }
+
+    .viec-tuong-tu {
+        padding: 5px 10px;
+        font-size: 13.2px;
+        line-height: 1.42857143;
+        border-radius: 2px;
+        background: rgba(0, 0, 0, .1);
+        border-color: #adadad;
+        color: #FFF;
+        margin-top: 10px;
+    }
+
+    ul.select2-choices,
+    select.sex.validate-selection.validation-passed {
+        width: 233px !important;
+    }
+
+    p#thongbao {
+        float: right;
+        position: absolute;
+        bottom: -23px;
+        right: 0;
+        color: red;
+    }
+    form#frm-search {
+        position: relative;
+    }
+
+    p#thongbao p {
+        color: red;
+    }
+    a.btn.btn-default.btn-outline.btn-sm.hidden-xs.text-center.viec-tuong-tu.add-new {
+        background: none;
+        margin-top: 5px;
+    }
+    a.btn.btn-default.btn-outline.btn-sm.hidden-xs.text-center.viec-tuong-tu.add-new:hover {
+        color: #fff;
+    }
+    .thongbao {
+        display: inline-block;
+        position: absolute !important;
+        width: auto !important;
+        float: right;
+        right: 135px;
+    }
+    p#thongbao a {
+        color: #FFF;
+    }
+    .tao-thong-bao h3 {
+        font-weight: 700;
+        font-size: 23px;
+        margin-top: 9.5px;
+        margin-bottom: 9.5px;
+    }
+    .mywork-form-reg.ungvien td {
+        margin-bottom: 14px;
+        padding-left: 10px;
+    }
+    .tao-thong-bao button.btn-submit.ui.button.labeled.icon {
+        padding-left: 1.4em!important;
+    }
+    .tao-thong-bao button.btn-submit.ui.button.btn-primary.labeled.icon {
+        background-color: #FC205B;
+        color: #FFF;
+        padding-left: 1.4em!important;
+    }
+    .tao-thong-bao i.save.icon {
+        display: none;
+    }
+    ul.select2-choices {
+        width: 100% !IMPORTANT;
+    }
+
+    ul.select2-choices a:before {
+        font-family: Icons;
+        content: "\f00d";
+        color: #4A4A4A;
+        font-size: 12px;
+        position: relative;
+        top: 1px;
+        margin-left: 2px;
+    }
+
+    .tao-thong-bao table tr td {
+        padding-top: 8px;
+    }
+
+    .tao-thong-bao input,.tao-thong-bao select,.tao-thong-bao  .select2-container.select2-container-multi,
+    .tao-thong-bao ul.select2-choices, select.sex.validate-selection.validation-passed{
+        width: 100% !important;
+    }
+    
+    .search-newlayout {
+    	background: #FFFFFF url(images/media/tuyen-dung-tim-viec-lam-bg2.jpg) 50% 0 no-repeat !important;
+    }
+/*tim kiem*/ 
+
+
+    .company-name {
+        color: #919191;
+        text-transform: uppercase;
+    }
+    .job-more-info {
+        color: #919191;
+        margin-top: 5px;
+    }
+    .job-more-info .job-salary span {
+        color: #fc205b;
+    }
+    .job-more-info .job-salary i.icon.dollar {
+        padding: 0;
+        margin: 0;
+    }
+    #job-hot-list .info-list-recruit {
+        padding-left: 54px;
+    }
+    #job-hot-list .all-list-recruit {
+        padding: 0 5px;
+        width: 33%;
+        float: left;
+    }
+     /*Tuyển dụng nhanh*/ 
+     

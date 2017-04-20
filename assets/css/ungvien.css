@@ -1,0 +1,460 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 12, 2017, 3:56:12 PM
+    Author     : vuhai
+*/
+
+    .asterisk {
+        position: absolute;
+        top: 2px;
+        right: -2px;
+        color: #FC205C;
+    }
+
+    .link-notity {
+        color: #FC205C !important;
+        font-weight: 500 !important;
+    }
+
+    .link-notity:hover {
+        color: #FFF !important;
+        font-weight: 500 !important;
+    }
+
+    .notification .menu .listmenu-user {
+        padding: 0 !important;
+    }
+
+    .notification .menu .listmenu-user .media {
+        padding: 10px;
+        cursor: pointer;
+    }
+
+    .notification .action {
+        margin-top: 20px;
+    }
+
+    .notification .action a {
+        border-top: none;
+        font-size: 13px !important;
+        color: #555 !important;
+        font-weight: 500 !important;
+
+        padding: 8px 0;
+        height: 42px !important;
+        line-height: 42px !important;
+        color: #3b83c0 !important;
+    }
+
+    .notification .media-object {
+        height: 40px;
+        width: 40px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+    }
+
+    .notification .listmenu-user li a {
+        background-color: transparent;
+    }
+
+    .mywork-menu .ui.type-search .top-search-adv {
+        position: absolute;
+        top: 0;
+        right: -36px;
+        width: 82px;
+        font-size: 12px;
+        border-left: 1px solid #ddd;
+        height: 35px;
+        line-height: 36px;
+        color: #fc205c;
+        padding-left: 2px;
+    }
+
+    .mywork-menu .ui.type-search .top-search-adv .icon {
+        font-size: 14px;
+    }
+
+    .mywork-menu .ui.type-search .menu.list-type-search {
+        margin-top: 41px;
+        margin-left: -212px;
+    }
+
+    #frmSearchJob .search-tags {
+        padding-right: 82px;
+    }
+
+    .menu-user .text {
+        height: 39px;
+    }
+
+    .user-login .userbox.notification .ui.dropdown .menu.transition:before {
+        left: 330px;
+    }
+
+    .user-login .userbox.notification .ui.dropdown .menu {
+        margin-left: -315px;
+        width: 400px !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu {
+        width: 300px;
+        border: 1px solid #CCC;
+        border-radius: 2px;
+    }
+
+    .user-login .menu.transition:before {
+        border-bottom: 8px solid #C1C1C1;
+    }
+
+    .uni-name {
+        color: #3b93ba !important;
+    }
+
+    .item-clock {
+        color: #999;
+        font-size: 12px !important;
+        font-style: normal;
+        margin-top: 1px;
+        font-style: italic;
+        display: inline-block;
+    }
+
+    .no-notify {
+        padding: 20px;
+        background: #F7F7F7;
+    }
+
+/*list ung vien*/ 
+
+    .ui.search .prompt {
+        border-radius:5px;
+        -moz-border-radius:5px;
+        -webkit-border-radius:5px;
+        max-width: 300px;
+    }
+    .mywork-menu .ui.search .icon.input input{
+        height: 36px;
+        border: solid 1px #ebebeb;
+        background: #fff;
+        font-size: 12px;
+        color: #999999 !important;
+        border-radius: 0;
+        border-right: none;
+    }
+    .ui.search .prompt{
+        width: 270px !important;
+    }
+    .mywork-menu .user-login-menu .dropdown > div:first-child .icon {
+        margin-right: 3px;
+        color: #fff;
+    }
+    .mywork-menu .user-login-menu .dropdown:first-child > div:first-child {
+        background: #0091d1;
+    }
+    .mywork-menu .user-login-menu .dropdown > div:first-child {
+        background: #4caf50;
+    }
+    .mywork-menu .user-login-menu .dropdown .menu {
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .head-search-option {
+        background: #ebebeb;
+        width: 289px;
+        float: left;
+        height: 36px;
+        border: solid 1px #ebebeb;
+        border-left: none;
+    }
+    .head-search-option > div {
+        height: 36px;
+        float: left;
+        padding: 10px 5px;
+    }
+    .head-search-option > div > a {
+        display: block;
+        border-left: 1px solid #d2d2d2;
+        padding-left: 8px;
+    }
+    .head-search-option .ui.visible.dropdown>.menu .item-tag {
+        position: relative;
+    }
+    .tt-dropdown-menu {
+        width: 586px !important;
+    }
+
+    .user-login .userbox:first-child .text a {
+        border-radius: 0;
+        background: #4caf50;
+        color: #fff;
+    }
+    .user-login .userbox:first-child .text a i {
+        color: #fff;
+    }
+    .user-login > ul > li {
+        border-radius: 0 !important;
+        background: #f7f7f7;
+    }
+    .user-login > ul > li > a {
+        border-radius: 0;
+    }
+    .mywork-menu .user-login .listmenu-user a {
+        background: #fff;
+        border-radius: 0;
+    }
+    .user-login .userbox .ui.dropdown .menu .listmenu-user a:hover {
+        background: #f7f7f7 !important;
+    }
+    .tt-dropdown-menu {
+        width: 588px !important;
+    }
+/*<!-- End css file -->*/
+
+    .notification .menu {
+        white-space: normal !important;
+    }
+
+    #list-uv-notify a {
+        height: 100% !important;
+        padding: 0 !important;
+        margin-right: 10px;
+    }
+
+    #list-uv-notify .media .media-left, #list-uv-notify .media .media-body {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    #list-uv-notify .media .media-left .media-object {
+        width: 50px;
+        height: 50px;
+    }
+
+    .action a {
+        height: 30px !important;
+        width: 100% !important;
+        line-height: 30px !important;
+        text-align: center !important;
+        background: #fafafa !important;
+        color: #333 !important;
+        font-weight: bold !important;
+        font-size: 14px !important;
+        border-top: 1px #cdcdcd solid;
+        border-radius: 0px 0px !important;
+    }
+
+    .notify-link {
+        background: transparent !important;
+    }
+
+    .notify-link:hover {
+        background: transparent !important;
+        color: black !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu {
+        width: 300px !important;
+    }
+
+    .notification-menu .menu {
+        width: 400px !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu .listmenu-user a:hover {
+        background: #f7f7f7;
+        color: black !important;
+    }
+
+    .user-login .userbox .ui.dropdown .menu .listmenu-user a:hover {
+
+    }
+
+/*<!-- end mywork header-->*/
+
+    .search-right-col #box-search-uv select {
+        border: 1px solid #ddd;
+        background: none;
+        height: 30px;
+        width: 100%;
+        margin-bottom: 15px;
+
+    }
+    .search-right-col #box-search-uv .mywork-form-reg{
+        padding: 20px;
+    }
+    .search-right-col #box-search-uv .title-cate span {
+        color: #333;
+    }
+    .hoso-title-important {
+        color: rgb(252, 32, 91) !important;
+        font-size: 14px !important;
+        font-weight: 500 !important;
+        text-transform: inherit !important;
+    }
+    .hoso-view-detail {
+        text-transform: inherit !important;
+        margin-top: 5px;
+        font-size: 13px !important;
+    }
+    .box-filter.boxshort .ui.type-search {
+        width: 148px;
+    }
+    .box-list-image ul li {
+        display: inline-block;
+        width: 33.1%;
+        border: 1px solid #ddd;
+        margin-bottom: 15px
+    }
+    .box-list-image ul li a {
+        display: block;
+        width: 100%;
+        padding: 1px;
+    }
+
+    .box-list-image ul li a img {
+        width:100%;
+        min-height: 120px;
+
+    }
+    .att-list-hoso {
+        position: absolute;
+        font-size: 15px !important;
+        top: 24px;
+        right: 5px;
+    }
+    .search-newlayout {
+    	background: #FFFFFF url(images/media/tuyen-dung-tim-viec-lam-bg2.jpg) 50% 0 no-repeat !important;
+    }
+    /*public/css/style_v4.css*/
+   
+#toolbox {
+    position: fixed;
+    right: 30px;
+    bottom: 45%;
+    margin-left: -550px;
+   	
+}
+#toolbox ul {
+    float: right;
+    width: 30px;
+    list-style: none outside none;
+}
+#toolbox li {
+    width: 50px;
+    height: 50px;
+    display: block;
+}
+#toolbox li.facebook a {
+    background: url('../images/icon/icon_facebook.png') no-repeat scroll 50% 50% transparent;
+}
+#toolbox li.gplus a {
+    background: url('../images/icon/GooglePlus-icon.png') no-repeat scroll 50% 50% transparent;
+}
+#toolbox li.youtube a {
+    background: url('../images/icon/youtube-icon.png') no-repeat scroll 50% 50% transparent;
+}
+#toolbox li.email-contact a {
+    background: url('../images/icon/icon_mail.png') no-repeat scroll 50% 50% transparent;
+}
+#toolbox li.phone-contact a {
+    background: url('../images/icon/icon_phone.png') no-repeat scroll 50% 50% transparent;
+}
+#toolbox li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.toolbox_sale {
+	width:33%;
+	float:left;
+	padding-top:10px;
+}
+
+.notshow {
+	display:none;
+}
+.contact-intro {
+	padding-top: 10px;
+}
+.contact-intro-pn {
+	color:#f16623 !important;
+	font-weight:bold;
+}
+.contact-intro-t {
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 1.1em;
+	line-height: 1.4;
+}
+/*Dang Nhap Facebook*/
+
+    #job-hot-list .info-list-recruit {
+        padding-left: 54px;
+    }
+    #job-hot-list .all-list-recruit {
+        padding: 0 5px;
+        float: left;
+    }
+    .box-list-recruit.uv-info {
+        position: relative;
+    }
+    .box-list-recruit.uv-info .item-watched {
+        right: 0;
+    }
+    .box-content-right .box-list-recruit.uv-info .item-watched {
+        right: 18px;
+        color: #7f7acc;
+    }
+
+    .box-content-right .box-list-recruit, .list-host-item {
+        width: auto;
+    }
+    .att-top-hoso {
+        font-size: 15px !important;
+        position: absolute;
+        right: 0;
+        bottom: 28px;
+        color: #666;
+    }
+/*ho so ung vien nang dong*/ 
+    #advisory {
+        position: fixed;
+        bottom: 60px;
+        right: -2px;
+    }
+    #advisory .advisory {
+        background-color: #FC205B;
+        border-radius: 2px;
+        color: #FFF;
+        width: 130px;
+        padding: 8px;
+        margin-bottom: 10px;
+        display: block;
+        text-align: center;
+    }
+    #advisory .advisory .ntd, #advisory .advisory .ntv {
+        font-weight: 500;
+    }
+    #advisory .advisory.blue {
+        background-color: #2798D7;
+    }
+
+    #advisory .title {
+        font-family: Roboto;
+        margin-bottom: 5px;
+        font-size: 13px;
+        font-weight: 500;
+        color: #555;
+    }
+    #advisory .title i {
+        padding: 0;
+        margin: 0;
+    }
+/*footer*/
