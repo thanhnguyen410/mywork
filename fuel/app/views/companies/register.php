@@ -168,8 +168,6 @@ function check_email()
 
 <form name="frmdangky" id="frmdangky" action="/companies/register" method="POST">
     <input type="hidden" name="sale_id" value="0">
-	<?php echo Form::csrf(); ?>
-
 	<!--<div class="title-cate">-->
 		<!--<span style="font-size: 15px; top: -4px;">Thông tin tài khoản</span>-->
 	<!--</div>-->
@@ -244,9 +242,11 @@ function check_email()
 			<li class="reg2">
 				<div class="ui form">
 					<div class="field location">
-						<select name="country" size="1" class="sex validate-selection" style="width: auto;">
+						<select name="country" id="register_company" size="1" class="sex validate-selection" style="width: auto;">
 							<option value="">-- Chọn Quốc gia --</option>
-							
+							<?php foreach($result_con as $country): ?>
+								<option value="<?php echo $country->id; ?>"><?php echo $country->name; ?></option>
+							<?php endforeach; ?>
 						</select>
 					</div>
 				</div>
@@ -259,7 +259,7 @@ function check_email()
 			<li class="reg2">
 				<div class="ui form">
 					<div class="field location">
-						<select name="city" size="1" class="sex validate-selection" style="width: auto;">
+						<select name="city" id="register_city" size="1" class="sex validate-selection" style="width: auto;">
 							<option value="">-- Chọn tỉnh/thành phố --</option>
 							
 						</select>
@@ -344,7 +344,7 @@ function check_email()
 			<li class="reg2">
 				<div class="ui form">
 					<div class="field">
-						<input name="contact_name" value="" id="contact_name" maxlength="250" type="text" class="required">
+						<input name="con_fullname" value="" id="contact_name" maxlength="250" type="text" class="required">
 					</div>
 				</div>
 			</li>
@@ -355,7 +355,7 @@ function check_email()
 			<li class="reg2">
 				<div class="ui form">
 					<div class="field">
-						<input name="contact_position" value="" id="contact_position" maxlength="250" type="text">
+						<input name="con_position" value="" id="contact_position" maxlength="250" type="text">
 					</div>
 				</div>
 			</li>
@@ -366,7 +366,7 @@ function check_email()
 			<li class="reg2">
 				<div class="ui form">
 					<div class="field">
-						<input name="contact_email" value="" id="contact_email" maxlength="50" type="text" class="required validate-email">
+						<input name="con_email" value="" id="contact_email" maxlength="50" type="text" class="required validate-email">
 					</div>
 				</div>
 			</li>
@@ -377,7 +377,7 @@ function check_email()
 			<li class="reg2">
 				<div class="ui form">
 					<div class="field">
-						<input name="contact_phone" value="" id="contact_phone" maxlength="50" type="text" class="required">
+						<input name="con_phone" value="" id="contact_phone" maxlength="50" type="text" class="required">
 					</div>
 				</div>
 			</li>
@@ -399,178 +399,178 @@ function check_email()
         <button type="submit" class="btn-submit" style="background: #4caf50; padding: 10px 40px; margin-left: 12px; height: auto;"><i class="forward mail icon"></i> ĐĂNG KÝ NHÀ TUYỂN DỤNG</button>
 	</div>
 </form>
-<style>
-    .mywork-btn button.btn-submit:hover {
-        background: #5fb962 !important;
-    }
-</style>
-<script type="text/javascript">
-	var member_register = new Validation('frmdangky', {immediate : true});
+		<style>
+		    .mywork-btn button.btn-submit:hover {
+		        background: #5fb962 !important;
+		    }
+		</style>
+		<script type="text/javascript">
+			var member_register = new Validation('frmdangky', {immediate : true});
 
-	Validation.addAllThese([
-		['validate-password', 'Mật khẩu cần có độ dài từ 3 đến 25 ký tự.', {
-			minLength : 3,
-			maxLength : 25
-		}],
-		['validate-password-confirm', 'Mật khẩu xác nhận phải giống với mật khẩu đã nhập.', {
-			equalToField : 'passw'
-		}],
-		['validate-term', 'Bạn phải tích vào hộp chọn.', function (v,elm) {
-			return $(elm).is(':checked');
-		}]
-	]);
+			Validation.addAllThese([
+				['validate-password', 'Mật khẩu cần có độ dài từ 3 đến 25 ký tự.', {
+					minLength : 3,
+					maxLength : 25
+				}],
+				['validate-password-confirm', 'Mật khẩu xác nhận phải giống với mật khẩu đã nhập.', {
+					equalToField : 'passw'
+				}],
+				['validate-term', 'Bạn phải tích vào hộp chọn.', function (v,elm) {
+					return $(elm).is(':checked');
+				}]
+			]);
 
-</script>
+		</script>
 
-<!-- Google Code for Chuy&#7875;n &#273;&#7893;i NTD Conversion Page
-In your html page, add the snippet and call
-goog_report_conversion when someone clicks on the
-chosen link or button. -->
-<script type="text/javascript">
-	/* <![CDATA[ */
-	goog_snippet_vars = function() {
-		var w = window;
-		w.google_conversion_id = 937279559;
-		w.google_conversion_label = "RRnlCLSfkWQQx4D3vgM";
-		w.google_remarketing_only = false;
-	}
-	// DO NOT CHANGE THE CODE BELOW.
-	goog_report_conversion = function(url) {
-		goog_snippet_vars();
-		window.google_conversion_format = "3";
-		var opt = new Object();
-		opt.onload_callback = function() {
-			if (typeof(url) != 'undefined') {
-				window.location = url;
+		<!-- Google Code for Chuy&#7875;n &#273;&#7893;i NTD Conversion Page
+		In your html page, add the snippet and call
+		goog_report_conversion when someone clicks on the
+		chosen link or button. -->
+		<script type="text/javascript">
+			/* <![CDATA[ */
+			goog_snippet_vars = function() {
+				var w = window;
+				w.google_conversion_id = 937279559;
+				w.google_conversion_label = "RRnlCLSfkWQQx4D3vgM";
+				w.google_remarketing_only = false;
 			}
-		}
-		var conv_handler = window['google_trackConversion'];
-		if (typeof(conv_handler) == 'function') {
-			conv_handler(opt);
-		}
-	}
-	/* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js">
-</script>
-<script type="text/javascript">
-	var dkFrm = $('#frmdangky');
+			// DO NOT CHANGE THE CODE BELOW.
+			goog_report_conversion = function(url) {
+				goog_snippet_vars();
+				window.google_conversion_format = "3";
+				var opt = new Object();
+				opt.onload_callback = function() {
+					if (typeof(url) != 'undefined') {
+						window.location = url;
+					}
+				}
+				var conv_handler = window['google_trackConversion'];
+				if (typeof(conv_handler) == 'function') {
+					conv_handler(opt);
+				}
+			}
+			/* ]]> */
+		</script>
+		<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion_async.js">
+		</script>
+		<script type="text/javascript">
+			var dkFrm = $('#frmdangky');
 
-	$('.btn-submit', dkFrm).click(function() {
-		goog_report_conversion();
-		dkFrm.submit();
-	});
-</script>
+			$('.btn-submit', dkFrm).click(function() {
+				goog_report_conversion();
+				dkFrm.submit();
+			});
+		</script>
 
-<script type="text/javascript">
-var _paq = _paq || [];
-  _paq.push(["setDomains", ["*.mywork.com.vn"]]);
-  _paq.push(['trackPageView']);
-  _paq.push(['enableLinkTracking']);
-  (function() {
-var u="//tracker.chinmedia.vn/";
-    _paq.push(['setTrackerUrl', u+'log.php']);
-    _paq.push(['setSiteId', '39']);
-var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'chintracker.js'; s.parentNode.insertBefore(g,s);
-  })();
-</script>
+		<script type="text/javascript">
+		var _paq = _paq || [];
+		  _paq.push(["setDomains", ["*.mywork.com.vn"]]);
+		  _paq.push(['trackPageView']);
+		  _paq.push(['enableLinkTracking']);
+		  (function() {
+		var u="//tracker.chinmedia.vn/";
+		    _paq.push(['setTrackerUrl', u+'log.php']);
+		    _paq.push(['setSiteId', '39']);
+		var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+		g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'chintracker.js'; s.parentNode.insertBefore(g,s);
+		  })();
+		</script>
                 </div>
             </div>
             <!-- end left-content-->
-            <div class="right-content">
-                <div class="box-right">
-	<a href="https://mywork.com.vn/tieu-diem-thang-04-nha-tuyen-dung" title="Đăng tuyển dụng - Tìm người tài - Nhanh và hiệu quả" rel="nofollow" target="_blank"><img class="adv-img" src="https://secure1.vncdn.vn/images/media/mywork-tuyen-dung-viec-lam-t4-300.jpg" alt="Đăng tuyển dụng - Tìm người tài - Nhanh và hiệu quả" width="100%"></a>
-</div><!-- BEGIN block_list_sales -->
-<div class="box-right" style="margin-top: 35px; border: 1px solid #ececec; padding: 12px; border-bottom: 5px solid #fc205b;">
-	<!-- end title-->
-	<div class="cont_blockright box-content-right info-acc" style="border: none; box-shadow: none;">
-        <p class="t-blue" style="text-transform: uppercase; font-weight: 500;">Hotline hỗ trợ nhà tuyển dụng</p>
-	    <div class="support_right listinfo-acc">
-	  		<div style="margin-left: -20px; margin-bottom: 8px;">
-                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
-                <h3 style="width: auto; display: inline-block; text-transform: none;"> Miền Nam <span class="t-pink">(08) 710 88688</span></h3>
-            </div>
+    <div class="right-content">
+         <div class="box-right">
+			<a href="https://mywork.com.vn/tieu-diem-thang-04-nha-tuyen-dung" title="Đăng tuyển dụng - Tìm người tài - Nhanh và hiệu quả" rel="nofollow" target="_blank"><img class="adv-img" src="https://secure1.vncdn.vn/images/media/mywork-tuyen-dung-viec-lam-t4-300.jpg" alt="Đăng tuyển dụng - Tìm người tài - Nhanh và hiệu quả" width="100%"></a>
+		</div><!-- BEGIN block_list_sales -->
+		<div class="box-right" style="margin-top: 35px; border: 1px solid #ececec; padding: 12px; border-bottom: 5px solid #fc205b;">
+			<!-- end title-->
+			<div class="cont_blockright box-content-right info-acc" style="border: none; box-shadow: none;">
+		        <p class="t-blue" style="text-transform: uppercase; font-weight: 500;">Hotline hỗ trợ nhà tuyển dụng</p>
+				    <div class="support_right listinfo-acc">
+				  		<div style="margin-left: -20px; margin-bottom: 8px;">
+			                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
+			                <h3 style="width: auto; display: inline-block; text-transform: none;"> Miền Nam <span class="t-pink">(08) 710 88688</span></h3>
+			            </div>
 
-		    <ul style="margin-left: -18px;">
-			  
-			  <li>
-			 	  <p>Ms Lệ Thủy</p><p>Ms Trâm</p><p>Ms Thanh Trúc</p><p>Ms Yến Chi</p><p>Ms Hoàng Nhung</p><p>Ms Phạm Dung</p><p>Ms Mỹ Hương</p><p>Ms Ngân</p><p>Ms Ý Nhi</p><p>Ms Phạm Hường</p><p>Ms Ái My</p><p>Ms Ngọc Phượng</p><p>Ms Phương Thúy</p><p>Ms Lê Chi</p><p>Ms Ngọc Khanh</p><p>Ms Hoài Nhi</p><p>Ms Mỹ Phương</p><p>Ms Thu Thanh</p><p>Ms Tuyết Trinh</p><p>Ms Cao Hằng</p><p>Ms Thanh Ngọc</p>
-			  </li>
+					    <ul style="margin-left: -18px;">
+						  
+						  <li>
+						 	  <p>Ms Lệ Thủy</p><p>Ms Trâm</p><p>Ms Thanh Trúc</p><p>Ms Yến Chi</p><p>Ms Hoàng Nhung</p><p>Ms Phạm Dung</p><p>Ms Mỹ Hương</p><p>Ms Ngân</p><p>Ms Ý Nhi</p><p>Ms Phạm Hường</p><p>Ms Ái My</p><p>Ms Ngọc Phượng</p><p>Ms Phương Thúy</p><p>Ms Lê Chi</p><p>Ms Ngọc Khanh</p><p>Ms Hoài Nhi</p><p>Ms Mỹ Phương</p><p>Ms Thu Thanh</p><p>Ms Tuyết Trinh</p><p>Ms Cao Hằng</p><p>Ms Thanh Ngọc</p>
+						  </li>
 
-			  <li class="t-blue">
-				  <p>0914 164 133</p><p>0902 377 365</p><p>0936 477 089</p><p>0907 041 125</p><p>0913 475 389</p><p>0964 579 603</p><p>0906 372 798</p><p>0935 372 907</p><p>0968 986 408</p><p>0164 968 6188</p><p>0936 340 289</p><p>0936 419 289</p><p>0902 229 489</p><p>0932 767 620</p><p>0936 369 783</p><p>0978 114 069</p><p>0916 000 364</p><p>0901 755 089</p><p>0934 475 489</p><p>0919 888 996</p><p>0166 728 0488</p>
-			  </li>
+						  <li class="t-blue">
+							  <p>0914 164 133</p><p>0902 377 365</p><p>0936 477 089</p><p>0907 041 125</p><p>0913 475 389</p><p>0964 579 603</p><p>0906 372 798</p><p>0935 372 907</p><p>0968 986 408</p><p>0164 968 6188</p><p>0936 340 289</p><p>0936 419 289</p><p>0902 229 489</p><p>0932 767 620</p><p>0936 369 783</p><p>0978 114 069</p><p>0916 000 364</p><p>0901 755 089</p><p>0934 475 489</p><p>0919 888 996</p><p>0166 728 0488</p>
+						  </li>
 
 
-			  
-		  </ul>
+						  
+					  </ul>
 
-            <div style="clear: both;"></div>
-            <div style="margin-left: -20px; margin-bottom: 8px;">
-                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
-                <h3 style="width: auto; display: inline-block; text-transform: none;"> Miền Bắc <span class="t-pink">(04) 710 88688</span></h3>
-            </div>
+			            <div style="clear: both;"></div>
+			            <div style="margin-left: -20px; margin-bottom: 8px;">
+			                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
+			                <h3 style="width: auto; display: inline-block; text-transform: none;"> Miền Bắc <span class="t-pink">(04) 710 88688</span></h3>
+			            </div>
 
-            <ul style="margin-left: -18px;">
-              
-			  <li>
-			 	  <p>Ms Tạ Thúy</p><p>Ms Phí Huyền</p><p>Ms Kim Nhung</p><p>Ms Ngọc Hà</p><p>Ms Thảo Anh</p><p>Ms Bùi Hồng</p><p>Ms Minh Hậu</p><p>Ms Hồng Thơm</p><p>Ms Hà Yến</p><p>Ms Minh Hải</p><p>Ms Thu Huyền</p><p>Ms Kiều Trang</p><p>Ms Thu Thủy</p><p>Ms Lê Hường</p><p>Ms Thúy Kiều</p><p>Ms Lê Hằng</p><p>Ms Vũ Tuyết</p><p>Ms Thu Huyền</p><p>Ms Phạm Hồng</p><p>Ms Trần Vui</p><p>Ms Thu Phương</p><p>Ms Thêu</p><p>Ms Huệ Thương</p><p>Ms Thùy Trang</p><p>Ms Liên</p><p>Ms Ngọc Thắng</p><p>Ms Trần Dâu</p><p>Ms Thanh Mai</p><p>Ms Vũ Hường</p><p>Ms Thùy Mai</p><p>Ms Đào Thủy</p><p>Ms Nguyễn Nhung</p><p>Ms Khánh Hòa</p><p>Ms Nguyễn Yến</p><p>Ms Hồng Nhung</p><p>Ms Nguyễn Thúy</p><p>Ms Ngọc Linh</p>
-			  </li>
+			            <ul style="margin-left: -18px;">
+			              
+						  <li>
+						 	  <p>Ms Tạ Thúy</p><p>Ms Phí Huyền</p><p>Ms Kim Nhung</p><p>Ms Ngọc Hà</p><p>Ms Thảo Anh</p><p>Ms Bùi Hồng</p><p>Ms Minh Hậu</p><p>Ms Hồng Thơm</p><p>Ms Hà Yến</p><p>Ms Minh Hải</p><p>Ms Thu Huyền</p><p>Ms Kiều Trang</p><p>Ms Thu Thủy</p><p>Ms Lê Hường</p><p>Ms Thúy Kiều</p><p>Ms Lê Hằng</p><p>Ms Vũ Tuyết</p><p>Ms Thu Huyền</p><p>Ms Phạm Hồng</p><p>Ms Trần Vui</p><p>Ms Thu Phương</p><p>Ms Thêu</p><p>Ms Huệ Thương</p><p>Ms Thùy Trang</p><p>Ms Liên</p><p>Ms Ngọc Thắng</p><p>Ms Trần Dâu</p><p>Ms Thanh Mai</p><p>Ms Vũ Hường</p><p>Ms Thùy Mai</p><p>Ms Đào Thủy</p><p>Ms Nguyễn Nhung</p><p>Ms Khánh Hòa</p><p>Ms Nguyễn Yến</p><p>Ms Hồng Nhung</p><p>Ms Nguyễn Thúy</p><p>Ms Ngọc Linh</p>
+						  </li>
 
-			  <li class="t-blue">
-				  <p>0934 582 389</p><p>0917 433 289</p><p>0981 356 186</p><p>0911 119 255</p><p>0936 404 289</p><p>0936 431 489</p><p>0936 017 089</p><p>0936 374 289</p><p>0904 649 089</p><p>0917 214 189</p><p>0936 479 089</p><p>0916 096 589</p><p>0917 302 389</p><p>0971 012 591</p><p>0902 267 389</p><p>0934 688 289</p><p>0962 890 055</p><p>0936 384 089</p><p>0962 769 955</p><p>0917 786 289</p><p>0936 241 489</p><p>0904 529 389</p><p>0904 539 189</p><p>0936 067 289</p><p>0981 356 187</p><p>0936 311 489</p><p>0978 695 662</p><p>0962 956 633</p><p>0903 473 989</p><p>0913 945 389</p><p>0936 340 389</p><p>0941 768 699</p><p>0914 555 194</p><p>0961 828 180</p><p>0936 106 289</p><p>0936 475 089</p><p>0936 142 289</p>
-			  </li>
+						  <li class="t-blue">
+							  <p>0934 582 389</p><p>0917 433 289</p><p>0981 356 186</p><p>0911 119 255</p><p>0936 404 289</p><p>0936 431 489</p><p>0936 017 089</p><p>0936 374 289</p><p>0904 649 089</p><p>0917 214 189</p><p>0936 479 089</p><p>0916 096 589</p><p>0917 302 389</p><p>0971 012 591</p><p>0902 267 389</p><p>0934 688 289</p><p>0962 890 055</p><p>0936 384 089</p><p>0962 769 955</p><p>0917 786 289</p><p>0936 241 489</p><p>0904 529 389</p><p>0904 539 189</p><p>0936 067 289</p><p>0981 356 187</p><p>0936 311 489</p><p>0978 695 662</p><p>0962 956 633</p><p>0903 473 989</p><p>0913 945 389</p><p>0936 340 389</p><p>0941 768 699</p><p>0914 555 194</p><p>0961 828 180</p><p>0936 106 289</p><p>0936 475 089</p><p>0936 142 289</p>
+						  </li>
 
-            </ul>
+			            </ul>
 
-            <div style="clear: both;"></div>
-            <div style="margin-left: -20px; margin-bottom: 8px;">
-                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
-                <h3 style="width: auto; display: inline-block; text-transform: none;"> Miền Trung</h3>
-            </div>
+			            <div style="clear: both;"></div>
+			            <div style="margin-left: -20px; margin-bottom: 8px;">
+			                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
+			                <h3 style="width: auto; display: inline-block; text-transform: none;"> Miền Trung</h3>
+			            </div>
 
-            <ul style="margin-left: -18px;">
-              
-			  <li>
-			 	  <p>Ms Đinh Nhung</p><p>Ms Ái Trâm</p><p>Ms Thùy Tâm</p><p>Ms Hoa</p><p>Ms Thanh Yên</p><p>Ms Thu Cúc</p><p>Ms Thu Hương</p><p>Ms Thúy Ngọc</p>
-			  </li>
+			            <ul style="margin-left: -18px;">
+			              
+						  <li>
+						 	  <p>Ms Đinh Nhung</p><p>Ms Ái Trâm</p><p>Ms Thùy Tâm</p><p>Ms Hoa</p><p>Ms Thanh Yên</p><p>Ms Thu Cúc</p><p>Ms Thu Hương</p><p>Ms Thúy Ngọc</p>
+						  </li>
 
-			  <li class="t-blue">
-				  <p>0936 479 089</p><p>0909 271 550</p><p>0963 208 508</p><p>0904 405 305 </p><p>0120 713 8100 </p><p>0947 748 885 </p><p>0166 689 9209 </p><p>0165 905 0662  </p>
-			  </li>
-            </ul>
-            
-            <div style="clear: both;"></div>
-            <div style="margin-left: -20px; margin-bottom: 8px;">
-                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
-                <h3 style="width: auto; display: inline-block; text-transform: none;"> Chăm sóc khách hàng</h3>
-            </div>
-		  <ul style="margin-left: -18px;">
-			  <li>
-				  <p>Mrs Huệ</p>
-				  <p>Email</p>
-			  </li>
-			  <li class="t-blue">
-					<p>0972 573 197</p>
-					<p>hotro@mywork.com.vn</p>
-			  </li>
-		  </ul>
+						  <li class="t-blue">
+							  <p>0936 479 089</p><p>0909 271 550</p><p>0963 208 508</p><p>0904 405 305 </p><p>0120 713 8100 </p><p>0947 748 885 </p><p>0166 689 9209 </p><p>0165 905 0662  </p>
+						  </li>
+			            </ul>
+			            
+			            <div style="clear: both;"></div>
+			            <div style="margin-left: -20px; margin-bottom: 8px;">
+			                <img style="margin-bottom: -8px; width: 25px; margin-right: 10px;" src="">
+			                <h3 style="width: auto; display: inline-block; text-transform: none;"> Chăm sóc khách hàng</h3>
+			            </div>
+					  <ul style="margin-left: -18px;">
+						  <li>
+							  <p>Mrs Huệ</p>
+							  <p>Email</p>
+						  </li>
+						  <li class="t-blue">
+								<p>0972 573 197</p>
+								<p>hotro@mywork.com.vn</p>
+						  </li>
+					  </ul>
 
-	  </div>
-		<div class="mywork-btn">
-			<a href="http://mywork.com.vn/bao-gia/" target="_blank" rel="nofollow" title="Báo giá dịch vụ tuyển dụng">Dịch vụ</a>
+				  	</div>
+					<div class="mywork-btn">
+						<a href="http://mywork.com.vn/bao-gia/" target="_blank" rel="nofollow" title="Báo giá dịch vụ tuyển dụng">Dịch vụ</a>
+					</div>
+				</div>
+			<div style="clear:both"></div>
 		</div>
-	</div>
-	<div style="clear:both"></div>
-</div>
-<!-- END block_list_sales -->
+		<!-- END block_list_sales -->
 
-<style>
-    .support_right.listinfo-acc li p {
-        padding: 0 0 13px 0;
-    }
-</style>
+			<style>
+			    .support_right.listinfo-acc li p {
+			        padding: 0 0 13px 0;
+			    }
+			</style>
             </div>
             <!-- end right-content-->
             <div style="clear: both;"></div>
@@ -580,3 +580,43 @@ g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'chintracker.js'; 
         </div>
     </div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$('#register_company').change(function(){
+			var country_id = $(this).val();
+
+			$.ajax({
+				url : 'http://chaythunghiem.esy.es/member/select_city',
+				type : 'get',
+				datatype : 'json',
+				data : {country_id:country_id},
+				cache : false,
+				success : function(result){
+					var obj = $.parseJSON(result);
+					if(obj.error==0){
+							var html = '<select name="city" size="1" class="sex validate-selection full-width" style="width: auto;">'
+							html+='<option value="">-- Chọn tỉnh/thành phố --</option>';
+
+					 	$.each(obj, function(key, data){
+					 		if(key!='error'){
+					 			html+='<option value="'+data.id+'">'+data.name+'</option>';	
+					 		}
+					 		
+					 });
+					 	html+='</select>';
+
+					 	$('#register_city').html(html);
+					}else{
+							var html = '<select name="city" size="1" class="sex validate-selection full-width" style="width: auto;">'
+							html+='<option value="">-- Chọn tỉnh/thành phố --</option>';
+							html+='</select>';
+
+					 	$('#register_city').html(html);
+					}
+				}
+
+			})
+		});
+	});
+</script>

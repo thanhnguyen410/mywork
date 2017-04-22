@@ -28,16 +28,21 @@ class Controller_Member extends Controller_Template
 
 	public function action_logout()
 	{
+        Session::delete('info');
+        Response::redirect('/');
+
 		$data["subnav"] = array('logout'=> 'active' );
 		$this->template->title = 'Member &raquo; Logout';
-		$this->template->content = View::forge('member/logout', $data);
+        $this->template->content = View::forge('member/logout', $data);
 	} 
 
 	public function action_register()
 	{	 
+
+        /*Gửi dữ liệu lên server */
 		if(Input::method()=='POST'){
 
-			$curl = Request::forge('http://chaythunghiem.esy.es/members/register','curl'); // Kết nối với server băng phương thức curl
+			$curl = Request::forge('http://chaythunghiem.esy.es/member/register','curl'); // Kết nối với server băng phương thức curl
 
 			$curl->set_method('post'); // Chọn phươg thức lấy dữ liệu
 
@@ -74,22 +79,24 @@ class Controller_Member extends Controller_Template
                 die;
     	 }
 
-            $curl1 = Request::forge('http://chaythunghiem.esy.es/member/register','curl'); // Kết nối với server băng phương thức curl
+        /* Nhận dữ liệu từ server gửi xuống */
 
-            $curl1->set_method('get'); // Chọn phươg thức lấy dữ liệu
+        $curl1 = Request::forge('http://chaythunghiem.esy.es/member/select_country','curl'); // Kết nối với server băng phương thức curl
 
-            $curl1->set_auto_format(true);
+        $curl1->set_method('get'); // Chọn phươg thức lấy dữ liệu
 
-            $result = $curl1->execute();
+        $curl1->set_auto_format(true);
 
-            $result = $result->response();
+        $result = $curl1->execute();
 
-            $result = $result->body;
+        $result = $result->response();
 
-            $data['result'] =json_decode($result);
+        $result = $result->body;
 
-            $this->template->title = 'Member &raquo; Register';
-            $this->template->content = View::forge('member/register', $data);
+        $data['result'] =json_decode($result);
+
+        $this->template->title = 'Member &raquo; Register';
+        $this->template->content = View::forge('member/register',$data);
     }
 
 }

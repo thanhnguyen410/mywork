@@ -8,6 +8,7 @@ class Controller_Home extends Controller_Template
 			Config::set('language','vi');
 			Lang::load('vi');
 		}else{ // Nếu không sẽ load phiên ngôn ngữ tiếng anh
+
 			Lang::load('en');
 		}
 	}
@@ -24,29 +25,45 @@ class Controller_Home extends Controller_Template
 	public function action_index()
 	{
 		if(Input::method()=='POST'){
-			if(Security::check_token()){
+			// if(Security::check_token()){
 				$curl = Request::forge('http://chaythunghiem.esy.es/member/login','curl'); // Kết nối với server băng phương thức curl
 
-				$curl->set_method('get'); // Chọn phươg thức lấy dữ liệu
- 
-				$curl->http_login('admin','admin','BASIC'); // Nhập tài khoản admin
+				$curl->set_method('post'); // Chọn phươg thức lấy dữ liệu
 
 				$curl->set_params(array('email'=>Input::post('email'),'password'=>base64_encode(Input::post('password')))); // lấy Dữ liệu từ form
 
 				$result = $curl->execute();
 
-				$result[''] = json_decode($result);
-
-				// print_r($result);
-				// die;
+				$result = json_decode($result);
 
 				if(isset($result->id)){
 					Session::set('info',$result);
+					Response::redirect('/');
+				}else{
+					$data['error_login_member'] = "Tên truy cập hoặc mật khẩu không đúng";
 				}
 
-			}else{
-				Response::redirect('/');
-			}
+		}
+
+		if(Input::method()=='POST'){
+			
+				$curl = Request::forge('http://chaythunghiem.esy.es/company/login','curl'); // Kết nối với server băng phương thức curl
+
+				$curl->set_method('post'); // Chọn phươg thức lấy dữ liệu
+
+				$curl->set_params(array('email'=>Input::post('email'),'password'=>base64_encode(Input::post('password')))); // lấy Dữ liệu từ form
+
+				$result = $curl->execute();
+
+				$result = json_decode($result);
+
+				if(isset($result->id)){
+					Session::set('info',$result);
+					Response::redirect('/');
+				}else{
+					$data['error_login_company'] = "Tên truy cập hoặc mật khẩu không đúng";
+				}
+
 		}
 
 		$data["subnav"] = array('index'=> 'active' );
